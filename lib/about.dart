@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class about extends StatefulWidget {
   const about({super.key});
@@ -9,41 +13,86 @@ class about extends StatefulWidget {
 }
 
 class _myskillState extends State<about> {
+  externallink(String url) async {
+    // const url = 'https://github.com/VIDHIGUPTA17';
+    // const url1 = 'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox';
+    if (await canLaunch(url)) {
+      await launch(url);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("About")),
-      body: Column(
-        
-        mainAxisAlignment: MainAxisAlignment.center,
+
+      body:SingleChildScrollView(
+       child:Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          
           Container(
-            
-            width: 700,
-            
-            height: 260,
-            margin: EdgeInsets.all(2),
-            color: Color.fromARGB(255, 230, 183, 226),
             child: Text(
-              "Hello, I'm Vidhi Gupta, a passionate and dedicated student pursuing a Bachelor's degree in Technology. My primary focus lies in competitive programming, where I thrive in solving complex problems and honing my coding skills.",
-              style: TextStyle(fontSize: 20),
+              "ABOUT ME",
+              style: TextStyle(
+                  fontSize: 45,
+                  fontFamily: 'font2',
+                  fontWeight: FontWeight.bold),
+            ),
+            padding: EdgeInsets.all(30),
+          ),
+          Container(
+            // margin: EdgeInsets.all(2),
+            // color: Color.fromARGB(255, 230, 183, 226),
+            child: Text(
+              "Hello, I'm Vidhi Gupta, a passionate and dedicated student pursuing a Bachelor's degree in Technology. My primary focus lies in competitive programming, where I thrive in solving complex problems and honing my coding skills.I am driven to continuously enhance my coding proficiency and expand my knowledge in Android Development. Looking forward to engaging in challenging projects that push my boundaries and contribute to my growth as a tech enthusiast.",
+              style: TextStyle(fontSize: 20, fontFamily: 'font1'),
             ),
             padding: EdgeInsets.all(9),
           ),
-          Container(
-            width: 700,
-            height: 260,
-            margin: EdgeInsets.all(2),
-            color: Color.fromARGB(255, 230, 183, 226),
-            child: Text(
-              "I am driven to continuously enhance my coding proficiency and expand my knowledge in [mention areas of interest]. Looking forward to engaging in challenging projects that push my boundaries and contribute to my growth as a tech enthusiast.",
-              style: TextStyle(fontSize: 20),
-            ),
-            padding: EdgeInsets.all(9),
-          )
         ],
       ),
+      )
+      ,bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.message),
+                label: "EMAIL",
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.github),
+                label: "git",
+                tooltip: "GITHUB",
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.hackerrank),
+                label: "HACKERRANK",
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.linkedinIn),
+                label: "LINKEDIN",
+                backgroundColor: Colors.blue),
+          ],
+          onTap: (index) {
+            print('Tapped index: $index');
+            switch (index) {
+              case 0:
+                externallink(
+                    'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox');
+                break;
+              case 1:
+                externallink('https://github.com/VIDHIGUPTA17');
+                break;
+              case 2:
+                externallink('https://www.hackerrank.com/VIDHIGUPTA17');
+                break;
+              case 3:
+                externallink(
+                    'https://www.linkedin.com/in/vidhi-gupta-26b0261b9/');
+                break;
+              default:
+                break;
+            }
+          }),
     );
   }
 }
