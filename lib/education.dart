@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  runApp(education());
+  runApp(const education());
 }
 
 class education extends StatefulWidget {
@@ -24,14 +24,14 @@ class _educationState extends State<education> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("EDUCATION"),
+        title: const Text("EDUCATION"),
 
         //  shadowColor: Colors.yellow,
       ),
       body: ListView(
-        padding: EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 20),
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Container(
@@ -42,20 +42,20 @@ class _educationState extends State<education> {
                   color: Colors.grey.withOpacity(0.6),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
             child: ListTile(
-              title: Text("School-Ch.chabbil dass public school"),
-              subtitle: Text("Intermediate-90%"),
+              title: const Text("School-Ch.chabbil dass public school"),
+              subtitle: const Text("Intermediate-90%"),
               tileColor: Colors.green,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(70)),
-              leading: Icon(Icons.school),
+              leading: const Icon(Icons.school),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Container(
@@ -66,23 +66,23 @@ class _educationState extends State<education> {
                   color: Colors.grey.withOpacity(0.6),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
             child: ListTile(
-              title: Text("College-Ajay Kumar Engineering college"),
-              subtitle: Text("Degree-Currently pursuing BTECH (CSE ds)"),
+              title: const Text("College-Ajay Kumar Engineering college"),
+              subtitle: const Text("Degree-Currently pursuing BTECH (CSE ds)"),
               tileColor: Colors.blue,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(70)),
-              leading: Icon(Icons.school),
+              leading: const Icon(Icons.school),
             ),
           ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.message),
                 label: "EMAIL",

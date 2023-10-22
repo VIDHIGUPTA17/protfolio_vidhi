@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 // import 'dart:js';
-
 import "package:flutter/cupertino.dart";
 import 'package:flutter/material.dart';
 import 'package:protfolio/about.dart';
@@ -33,13 +32,11 @@ class FlutterApp extends StatelessWidget {
 }
 
 class DashBoardScreen extends StatelessWidget {
-  
-  _launchExternalLink(String url) async {
+  externallink(String url) async {
     // const url = 'https://github.com/VIDHIGUPTA17';
     // const url1 = 'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox';
     if (await canLaunch(url)) {
       await launch(url);
-   
     }
   }
 
@@ -50,8 +47,10 @@ class DashBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // final top = coverheigth - (70);
     return Scaffold(
+      // backgroundColor: Colors.grey,
       body: ListView(
-          padding: EdgeInsets.zero, children: [buildstack(), buildcontent(context)]),
+          padding: EdgeInsets.zero,
+          children: [buildstack(), buildcontent(context)]),
       bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
@@ -81,29 +80,23 @@ class DashBoardScreen extends StatelessWidget {
             print('Tapped index: $index');
             switch (index) {
               case 0:
-                
-                _launchExternalLink(
+                externallink(
                     'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox');
                 break;
               case 1:
-               
-                _launchExternalLink('https://github.com/VIDHIGUPTA17');
+                externallink('https://github.com/VIDHIGUPTA17');
                 break;
               case 2:
-                
-                _launchExternalLink('https://www.hackerrank.com/VIDHIGUPTA17');
+                externallink('https://www.hackerrank.com/VIDHIGUPTA17');
                 break;
               case 3:
-              
-                _launchExternalLink(
+                externallink(
                     'https://www.linkedin.com/in/vidhi-gupta-26b0261b9/');
                 break;
               default:
-                
                 break;
             }
-          }
-          ),
+          }),
     );
   }
 
@@ -138,6 +131,9 @@ class DashBoardScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 50, fontFamily: 'font2', fontWeight: FontWeight.bold),
         ),
+        SizedBox(
+          height: 15,
+        ),
         Text(
           "Student ",
           style: TextStyle(
@@ -149,82 +145,109 @@ class DashBoardScreen extends StatelessWidget {
         const SizedBox(
           height: 50,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Row(
-              children: [
-                Container(
-                    width: 135,
-                    height: 100,
-                    // color: Colors.blue,
-                    decoration: BoxDecoration(
-                        // color: Color(6)
-                        // borderRadius: BorderRadius.circular(109),
 
-                        // shape: BoxShape.circle
+        Wrap(
+          children: <Widget>[
+            // Padding(padding: EdgeInsets.only(bottom: 9)),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // Padding(padding:EdgeInsets.all(2)),
+                Row(
+                  children: [
+                    Container(
+                        width: MediaQuery.of(context).size.width / 4,
+
+                        // width,
+                        height: 100,
+                        margin: EdgeInsets.only(bottom: 10),
+                        // color: Colors.blue,
+                        decoration: BoxDecoration(
+
+                            // color: Color(6)
+                            // borderRadius: BorderRadius.circular(109),
+
+                            // shape: BoxShape.circle
+                            ),
+                        child: ElevatedButton(
+                          child: Text(
+                            "ABOUT ME",
+                            style: TextStyle(
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.034,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => about()));
+                          },
+                        ))
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                        // width: 150,
+                        width: MediaQuery.of(context).size.width / 4,
+                        height: 100,
+                        margin: EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.amberAccent,
+                          borderRadius: BorderRadius.circular(6),
                         ),
-                    child: ElevatedButton(
-                      child: Text(
-                        "ABOUT ME",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => about()));
-                      },
-                    ))
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                    width: 150,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: ElevatedButton(
-                      child: Text(
-                        "EDUCATION",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => education()));
-                      },
-                    ))
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: ElevatedButton(
-                      child: Text(
-                        "SKILLS",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => myskill()));
-                      },
-                    ))
+                        child: ElevatedButton(
+                          child: Text(
+                            "EDUCATION",
+                            style: TextStyle(
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.031,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => education()));
+                          },
+                        ))
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                        // width: 100,
+                        width: MediaQuery.of(context).size.width / 4,
+                        height: 100,
+                        margin: EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.amberAccent,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: ElevatedButton(
+                          child: Text(
+                            "SKILLS",
+                            style: TextStyle(
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.033,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => myskill()));
+                          },
+                        ))
+                  ],
+                ),
               ],
             ),
           ],
-        ),
+        )
       ]);
 }

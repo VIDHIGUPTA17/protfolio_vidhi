@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -24,36 +23,38 @@ class _myskillState extends State<about> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("About")),
+      appBar: AppBar(title: const Text("About")),
 
       body:SingleChildScrollView(
        child:Column(
         // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-            child: Text(
+            padding: const EdgeInsets.all(30),
+            child: const Text(
               "ABOUT ME",
               style: TextStyle(
                   fontSize: 45,
                   fontFamily: 'font2',
                   fontWeight: FontWeight.bold),
             ),
-            padding: EdgeInsets.all(30),
           ),
           Container(
             // margin: EdgeInsets.all(2),
             // color: Color.fromARGB(255, 230, 183, 226),
-            child: Text(
+            padding: const EdgeInsets.all(9),
+            // margin: EdgeInsets.all(2),
+            // color: Color.fromARGB(255, 230, 183, 226),
+            child: const Text(
               "Hello, I'm Vidhi Gupta, a passionate and dedicated student pursuing a Bachelor's degree in Technology. My primary focus lies in competitive programming, where I thrive in solving complex problems and honing my coding skills.I am driven to continuously enhance my coding proficiency and expand my knowledge in Android Development. Looking forward to engaging in challenging projects that push my boundaries and contribute to my growth as a tech enthusiast.",
               style: TextStyle(fontSize: 20, fontFamily: 'font1'),
             ),
-            padding: EdgeInsets.all(9),
           ),
         ],
       ),
       )
       ,bottomNavigationBar: BottomNavigationBar(
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.message),
                 label: "EMAIL",

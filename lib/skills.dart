@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,14 +25,14 @@ class _myskillState extends State<myskill> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("SKILLS")),
+      appBar: AppBar(title: const Text("SKILLS")),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Padding(padding: EdgeInsets.all(3)),
+            const Padding(padding: EdgeInsets.all(3)),
             Container(
-              child: Text(
+              child: const Text(
                 "SKILLS",
                 style: TextStyle(
                     fontFamily: 'font2',
@@ -49,21 +48,21 @@ class _myskillState extends State<myskill> {
                   opcapacity2 = 1.0;
                 });
               },
-              child: Text("HTML,CSS"),
+              child: const Text("HTML,CSS"),
             ),
             AnimatedOpacity(
               opacity: opcapacity2,
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               child: Container(
                 width: 700,
                 height: 70,
-                margin: EdgeInsets.all(6),
+                margin: const EdgeInsets.all(6),
+                padding: const EdgeInsets.all(9),
                 // color: const Color.fromARGB(255, 255, 236, 169),
-                child: Text(
+                child: const Text(
                   "I have made a Akgec Website clone using HTML CSS",
                   style: TextStyle(fontSize: 20),
                 ),
-                padding: EdgeInsets.all(9),
               ),
             ),
             ElevatedButton(
@@ -73,20 +72,20 @@ class _myskillState extends State<myskill> {
                     opcapacity = 1.0;
                   });
                 },
-                child: Text("Java Script")),
+                child: const Text("Java Script")),
             AnimatedOpacity(
               opacity: opcapacity,
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               child: Container(
                 width: 700,
                 height: 70,
-                margin: EdgeInsets.all(2),
+                margin: const EdgeInsets.all(2),
+                padding: const EdgeInsets.all(9),
                 // color: const Color.fromARGB(255, 255, 236, 169),
-                child: Text(
+                child: const Text(
                   "I made a Brick Breaker Game using java script,html canvas.",
                   style: TextStyle(fontSize: 20),
                 ),
-                padding: EdgeInsets.all(9),
               ),
             ),
             ElevatedButton(
@@ -96,20 +95,20 @@ class _myskillState extends State<myskill> {
                     opcapacity1 = 1.0;
                   });
                 },
-                child: Text("Competetive Programming")),
+                child: const Text("Competetive Programming")),
             AnimatedOpacity(
               opacity: opcapacity1,
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               child: Container(
                 width: 700,
                 height: 70,
-                margin: EdgeInsets.all(2),
+                margin: const EdgeInsets.all(2),
+                padding: const EdgeInsets.all(9),
                 // color: const Color.fromARGB(255, 255, 236, 169),
-                child: Text(
+                child: const Text(
                   "I am Silve Badge in Problem Solving on Hackerrank",
                   style: TextStyle(fontSize: 20),
                 ),
-                padding: EdgeInsets.all(9),
               ),
             ),
             ElevatedButton(
@@ -119,27 +118,27 @@ class _myskillState extends State<myskill> {
                     opcapacity3 = 1.0;
                   });
                 },
-                child: Text("Flutter")),
+                child: const Text("Flutter")),
             AnimatedOpacity(
               opacity: opcapacity3,
-              duration: Duration(seconds: 2),
+              duration: const Duration(seconds: 2),
               child: Container(
                 width: 700,
-                height: 50,
-                margin: EdgeInsets.all(2),
+                // height: 50,
+                margin: const EdgeInsets.all(2),
+                padding: const EdgeInsets.all(9),
                 // color: const Color.fromARGB(255, 255, 236, 169),
-                child: Text(
+                child: const Text(
                   "I have made a protfolio using Flutter.",
                   style: TextStyle(fontSize: 20),
                 ),
-                padding: EdgeInsets.all(9),
               ),
             ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: Icon(FontAwesomeIcons.message),
                 label: "EMAIL",
