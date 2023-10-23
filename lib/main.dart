@@ -4,6 +4,7 @@ import 'dart:ui';
 import "package:flutter/cupertino.dart";
 import 'package:flutter/material.dart';
 import 'package:protfolio/about.dart';
+import 'package:protfolio/contact.dart';
 import 'package:protfolio/education.dart';
 import 'package:protfolio/skills.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -32,17 +33,9 @@ class FlutterApp extends StatelessWidget {
 }
 
 class DashBoardScreen extends StatelessWidget {
-  externallink(String url) async {
-    // const url = 'https://github.com/VIDHIGUPTA17';
-    // const url1 = 'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox';
-    if (await canLaunch(url)) {
-      await launch(url);
-    }
-  }
-
   final double coverheigth = 220;
   final profileheigth = 140;
-
+//hello people yoyoyo
   @override
   Widget build(BuildContext context) {
     // final top = coverheigth - (70);
@@ -50,26 +43,24 @@ class DashBoardScreen extends StatelessWidget {
       // backgroundColor: Colors.grey,
       body: ListView(
           padding: EdgeInsets.zero,
-          children: [buildstack(), buildcontent(context)]),
+          children: [buildstack(context), buildcontent(context)]),
       bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.message),
-              label: "EMAIL",
-              tooltip: "email",
+              icon: Icon(Icons.home),
+              label: "HOME",
               backgroundColor: Colors.blue,
             ),
             BottomNavigationBarItem(
-                icon: Icon(FontAwesomeIcons.github),
+                icon: Icon(FontAwesomeIcons.faceSmile),
                 label: "G",
-                tooltip: "GITHUB",
                 backgroundColor: Colors.blue),
             BottomNavigationBarItem(
-                icon: Icon(FontAwesomeIcons.hackerrank),
+                icon: Icon(FontAwesomeIcons.school),
                 label: "H",
                 backgroundColor: Colors.blue),
             BottomNavigationBarItem(
-                icon: Icon(FontAwesomeIcons.linkedinIn),
+                icon: Icon(Icons.interests),
                 label: "L",
                 backgroundColor: Colors.blue),
           ],
@@ -77,21 +68,22 @@ class DashBoardScreen extends StatelessWidget {
           // selectedItemColor: Colors.white,
 
           onTap: (index) {
-            print('Tapped index: $index');
             switch (index) {
               case 0:
-                externallink(
-                    'https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FlutterApp()));
                 break;
               case 1:
-                externallink('https://github.com/VIDHIGUPTA17');
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => about()));
                 break;
               case 2:
-                externallink('https://www.hackerrank.com/VIDHIGUPTA17');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => education()));
                 break;
               case 3:
-                externallink(
-                    'https://www.linkedin.com/in/vidhi-gupta-26b0261b9/');
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => myskill()));
                 break;
               default:
                 break;
@@ -100,11 +92,14 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget buildCoverImage() => Container(
+  Widget buildCoverImage(BuildContext context) => Container(
         color: Colors.blueAccent,
-        child: Image.asset('assests/images/appbarimage.png'),
-        width: double.infinity,
-        height: coverheigth,
+        child: Image.asset(
+          'assests/images/appbarimage.png',
+          width: MediaQuery.of(context).size.width,
+          height: coverheigth,
+          fit: BoxFit.fill,
+        ),
       );
 
   Widget buildprofileimage() => CircleAvatar(
@@ -112,14 +107,15 @@ class DashBoardScreen extends StatelessWidget {
         backgroundImage: AssetImage('assests/images/img2.jpeg'),
       );
 
-  Widget buildstack() => Stack(
+  Widget buildstack(BuildContext context) => Stack(
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           alignment: Alignment.center,
           clipBehavior: Clip.none,
           children: [
             // Container(margin: EdgeInsets.only(bottom: 800),),
             Container(
-                margin: EdgeInsets.only(bottom: 100), child: buildCoverImage()),
+                margin: EdgeInsets.only(bottom: 100),
+                child: buildCoverImage(context)),
             Positioned(top: coverheigth / 2 + 30, child: buildprofileimage()),
           ]);
 
@@ -131,9 +127,8 @@ class DashBoardScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 50, fontFamily: 'font2', fontWeight: FontWeight.bold),
         ),
-        SizedBox(
-          height: 15,
-        ),
+        // SizedBox(
+        //   height: 10,        ),
         Text(
           "Student ",
           style: TextStyle(
@@ -143,108 +138,87 @@ class DashBoardScreen extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
         const SizedBox(
-          height: 50,
+          height: 30,
         ),
 
         Wrap(
           children: <Widget>[
             // Padding(padding: EdgeInsets.only(bottom: 9)),
 
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+            // Padding(padding:EdgeInsets.all(2)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // Padding(padding:EdgeInsets.all(2)),
-                Row(
-                  children: [
-                    Container(
-                        width: MediaQuery.of(context).size.width / 4,
-
-                        // width,
-                        height: 100,
-                        margin: EdgeInsets.only(bottom: 10),
-                        // color: Colors.blue,
-                        decoration: BoxDecoration(
-
-                            // color: Color(6)
-                            // borderRadius: BorderRadius.circular(109),
-
-                            // shape: BoxShape.circle
-                            ),
-                        child: ElevatedButton(
-                          child: Text(
-                            "ABOUT ME",
-                            style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.034,
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => about()));
-                          },
-                        ))
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                        // width: 150,
-                        width: MediaQuery.of(context).size.width / 4,
-                        height: 100,
-                        margin: EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.amberAccent,
-                          borderRadius: BorderRadius.circular(6),
+                Container(
+                  width: MediaQuery.of(context).size.width / 3,
+                  height: 100,
+                  margin: EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => contact()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.contact_mail,
+                          size: MediaQuery.of(context).size.width * 0.033,
                         ),
-                        child: ElevatedButton(
-                          child: Text(
-                            "EDUCATION",
-                            style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.031,
-                            ),
+                        SizedBox(width: 8.0),
+                        Text(
+                          "Contact Me",
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.033,
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => education()));
-                          },
-                        ))
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                        // width: 100,
-                        width: MediaQuery.of(context).size.width / 4,
-                        height: 100,
-                        margin: EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.amberAccent,
-                          borderRadius: BorderRadius.circular(6),
                         ),
-                        child: ElevatedButton(
-                          child: Text(
-                            "SKILLS",
-                            style: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.033,
-                            ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 3,
+                  height: 100,
+                  margin: EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => myskill()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.share,
+                          size: MediaQuery.of(context).size.width * 0.033,
+                        ),
+                        SizedBox(width: 8.0),
+                        Text(
+                          "Share",
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.033,
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => myskill()));
-                          },
-                        ))
-                  ],
-                ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ],

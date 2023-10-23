@@ -19,7 +19,7 @@ class _educationState extends State<education> {
       await launch(url);
     }
   }
-
+final double coverheigth = 220;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +29,14 @@ class _educationState extends State<education> {
         //  shadowColor: Colors.yellow,
       ),
       body: ListView(
-        padding: const EdgeInsets.only(top: 20),
+        // padding: const EdgeInsets.only(top: 20),
         children: [
+          Container(
+        color: Colors.blueAccent,
+        child: Image.asset('assests/images/edu.png'),
+        width: double.infinity,
+        height: coverheigth,
+      ),
           const SizedBox(
             height: 50,
           ),

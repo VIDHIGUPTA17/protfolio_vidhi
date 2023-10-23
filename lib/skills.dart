@@ -18,6 +18,8 @@ class _myskillState extends State<myskill> {
     }
   }
 
+  final double coverheigth = 220;
+
   var opcapacity = 0.0;
   var opcapacity1 = 0.0;
   var opcapacity2 = 0.0;
@@ -32,23 +34,24 @@ class _myskillState extends State<myskill> {
           children: [
             const Padding(padding: EdgeInsets.all(3)),
             Container(
-              child: const Text(
-                "SKILLS",
-                style: TextStyle(
-                    fontFamily: 'font2',
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline),
+              child: Image.asset(
+                'assests/images/skill.jpg',
+                fit: BoxFit.fill,
               ),
+              width: double.infinity,
+              height: coverheigth,
             ),
-            ElevatedButton(
-              onPressed: () {
-                // opcapacity = 1;
-                setState(() {
-                  opcapacity2 = 1.0;
-                });
-              },
-              child: const Text("HTML,CSS"),
+            Container(
+              width: MediaQuery.of(context).size.width / 4,
+              child: ElevatedButton(
+                onPressed: () {
+                  // opcapacity = 1;
+                  setState(() {
+                    opcapacity2 = 1.0;
+                  });
+                },
+                child: const Text("HTML,CSS"),
+              ),
             ),
             AnimatedOpacity(
               opacity: opcapacity2,
@@ -65,14 +68,17 @@ class _myskillState extends State<myskill> {
                 ),
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  // opcapacity = 1;
-                  setState(() {
-                    opcapacity = 1.0;
-                  });
-                },
-                child: const Text("Java Script")),
+            Container(
+              width: MediaQuery.of(context).size.width / 4,
+              child: ElevatedButton(
+                  onPressed: () {
+                    // opcapacity = 1;
+                    setState(() {
+                      opcapacity = 1.0;
+                    });
+                  },
+                  child: const Text("Java Script")),
+            ),
             AnimatedOpacity(
               opacity: opcapacity,
               duration: const Duration(seconds: 2),
@@ -88,14 +94,17 @@ class _myskillState extends State<myskill> {
                 ),
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  // opcapacity = 1;
-                  setState(() {
-                    opcapacity1 = 1.0;
-                  });
-                },
-                child: const Text("Competetive Programming")),
+            Container(
+              width: MediaQuery.of(context).size.width / 4,
+              child: ElevatedButton(
+                  onPressed: () {
+                    // opcapacity = 1;
+                    setState(() {
+                      opcapacity1 = 1.0;
+                    });
+                  },
+                  child: const Text("Competetive Programming")),
+            ),
             AnimatedOpacity(
               opacity: opcapacity1,
               duration: const Duration(seconds: 2),
@@ -111,14 +120,17 @@ class _myskillState extends State<myskill> {
                 ),
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  // opcapacity = 1;
-                  setState(() {
-                    opcapacity3 = 1.0;
-                  });
-                },
-                child: const Text("Flutter")),
+            Container(
+              width: MediaQuery.of(context).size.width / 4,
+              child: ElevatedButton(
+                  onPressed: () {
+                    // opcapacity = 1;
+                    setState(() {
+                      opcapacity3 = 1.0;
+                    });
+                  },
+                  child: const Text("Flutter")),
+            ),
             AnimatedOpacity(
               opacity: opcapacity3,
               duration: const Duration(seconds: 2),
