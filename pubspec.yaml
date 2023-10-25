@@ -67,6 +67,9 @@ flutter:
     - assests/images/img2.jpeg
     - assests/images/edu.png
     - assests/images/skill.jpg
+    - assests/images/about.webp
+    - assests/images/contact.png
+    - assests/images/contact.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

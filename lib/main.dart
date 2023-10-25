@@ -1,19 +1,9 @@
-import 'dart:ui';
-
-// import 'dart:js';
-import "package:flutter/cupertino.dart";
 import 'package:flutter/material.dart';
 import 'package:protfolio/about.dart';
 import 'package:protfolio/contact.dart';
 import 'package:protfolio/education.dart';
 import 'package:protfolio/skills.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:flutter/src/material/bottom_navigation_bar.dart';
-// import 'package:url_launcher/url_launcher.dart';
-// import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 void main() {
@@ -25,7 +15,6 @@ class FlutterApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Flutter app",
-      // theme: ThemeData(primarySwatch: Colors.white),
       debugShowCheckedModeBanner: false,
       home: DashBoardScreen(),
     );
@@ -33,17 +22,32 @@ class FlutterApp extends StatelessWidget {
 }
 
 class DashBoardScreen extends StatelessWidget {
-  final double coverheigth = 220;
-  final profileheigth = 140;
-//hello people yoyoyo
+  // final double coverheigth = 220;
+
   @override
   Widget build(BuildContext context) {
-    // final top = coverheigth - (70);
     return Scaffold(
-      // backgroundColor: Colors.grey,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < 600) {
+            return buildmobile(context);
+          } else {
+            return buildweb(context);
+          }
+        },
+      ),
+    );
+  }
+
+  Widget buildmobile(BuildContext context) {
+    return Scaffold(
       body: ListView(
-          padding: EdgeInsets.zero,
-          children: [buildstack(context), buildcontent(context)]),
+        padding: EdgeInsets.zero,
+        children: [
+          buildstack(context),
+          buildcontent(context),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
@@ -92,12 +96,87 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
+  Widget buildweb(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          width: 150,
+          color: Colors.blue,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              buildNavigationButton(
+                icon: Icons.home,
+                label: "Home",
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FlutterApp()));
+                },
+              ),
+              buildNavigationButton(
+                icon: FontAwesomeIcons.faceSmile,
+                label: "About",
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => about()));
+                },
+              ),
+              buildNavigationButton(
+                icon: FontAwesomeIcons.school,
+                label: "Education",
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => education()));
+                },
+              ),
+              buildNavigationButton(
+                icon: Icons.interests,
+                label: "Skills",
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => myskill()));
+                },
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              buildstack(context),
+              buildcontent(context),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildNavigationButton({
+    required IconData icon,
+    required String label,
+    required VoidCallback onPressed,
+  }) {
+    return TextButton(
+      onPressed: onPressed,
+      child: Column(
+        children: [
+          Icon(icon, color: Colors.white),
+          SizedBox(height: 5),
+          Text(label, style: TextStyle(color: Colors.white)),
+        ],
+      ),
+    );
+  }
+
   Widget buildCoverImage(BuildContext context) => Container(
         color: Colors.blueAccent,
         child: Image.asset(
           'assests/images/appbarimage.png',
           width: MediaQuery.of(context).size.width,
-          height: coverheigth,
+          height: 220,
           fit: BoxFit.fill,
         ),
       );
@@ -116,7 +195,7 @@ class DashBoardScreen extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(bottom: 100),
                 child: buildCoverImage(context)),
-            Positioned(top: coverheigth / 2 + 30, child: buildprofileimage()),
+            Positioned(top: 220 / 2 + 30, child: buildprofileimage()),
           ]);
 
   Widget buildcontent(BuildContext context) =>
@@ -152,30 +231,28 @@ class DashBoardScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width / 3,
+                  width: 200,
                   height: 100,
                   margin: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.amberAccent,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => contact()));
                     },
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Icon(
                           Icons.contact_mail,
-                          size: MediaQuery.of(context).size.width * 0.033,
+                          // size: MediaQuery.of(context).size.width * 0.033,
                         ),
-                        SizedBox(width: 8.0),
+                        SizedBox(
+                          width: 6,
+                        ),
                         Text(
                           "Contact Me",
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.033,
+                            fontSize: 20,
                           ),
                         ),
                       ],
@@ -189,7 +266,7 @@ class DashBoardScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width / 3,
+                  width: 200,
                   height: 100,
                   margin: EdgeInsets.only(bottom: 10),
                   decoration: BoxDecoration(
@@ -206,13 +283,13 @@ class DashBoardScreen extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.share,
-                          size: MediaQuery.of(context).size.width * 0.033,
+                          // size: MediaQuery.of(context).size.width * 0.033,
                         ),
-                        SizedBox(width: 8.0),
+                        SizedBox(width: 6),
                         Text(
                           "Share",
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.033,
+                            fontSize: 20,
                           ),
                         ),
                       ],
